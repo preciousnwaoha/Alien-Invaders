@@ -8,7 +8,7 @@ class Ship():
         self.ai_settings = ai_settings
 
         # Load the ship image and get its rect.
-        self.image = pygame.image.load("alien_invasion/assets/rocket.bmp")
+        self.image = pygame.image.load("./assets/rocket.bmp")
         self.image = pygame.transform.scale(self.image, (30.5, 38.40))
         
         self.rect = self.image.get_rect()
