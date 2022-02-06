@@ -43,4 +43,4 @@ loses a ship. If the player loses three ships, the game ends.
 
 ## Other Games I've Made
 * [Ball Shooter]( https://preciousnwaoha.github.io/ball-shooter)  
-* [Number Jack]( https://preciousnwaoha.github.io/NumberJack)
+* [Number Jack]( https://preciousnwaoha.github.io/numberjack)
