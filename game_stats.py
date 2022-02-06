@@ -1,3 +1,6 @@
+import shelve
+
+
 class GameStats():
     """Track statistics for Alien Invasion."""
 
@@ -8,8 +11,15 @@ class GameStats():
 
         # Start Alien Invasion in an active state.
         self.game_active = False
+
         # High score should never be reset.
-        self.high_score = 0
+        d = shelve.open('high_score')
+        if d:
+            self.high_score = d['high_score']
+        else:
+            d['high_score'] = 0 
+            self.high_score = d['high_score']
+        d.close()
 
     def reset_stats(self):
         """Initialize statistics that can change during the game."""

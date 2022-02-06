@@ -1,18 +1,20 @@
 import pygame
 from pygame.sprite import Sprite
 
+
 class Alien(Sprite):
     """A class to represent a single alien in the fleet."""
 
-    def __init__(self, ai_settings, screen):
+    def __init__(self, ai_settings, screen, rdm_img_path):
         """Initialize the alien and set its starting position."""
         super(Alien, self).__init__()
         self.screen = screen
         self.ai_settings = ai_settings
+        self.rdm_img_path = rdm_img_path
 
         # Load the alien image and set its rect attribute.
-        self.image = pygame.image.load("./assets/alien.bmp")
-        self.image = pygame.transform.scale(self.image, (57.6, 30.24))
+        self.image = pygame.image.load(self.rdm_img_path)
+        self.image = pygame.transform.scale(self.image, (64.1, 56.2))
         
         self.rect = self.image.get_rect()
 

@@ -1,3 +1,5 @@
+import pygame
+
 class Settings():
     """A class to store all settings for Alien Invasion."""
 
@@ -5,8 +7,23 @@ class Settings():
         """Initialize the game's static settings."""
         # Screen settings
         self.screen_width = 1280
-        self.screen_height = 680
-        self.bg_color = (0,0,20)
+        self.screen_height = 720
+        self.bg_color = (0, 0, 0)
+        self.background = pygame.image.load("./assets/img/space2.jpg")
+        # background = pygame.image.load(os.path.join('images', 'bg.png')).convert()
+        # Make a copy of the backgound image
+        self.bg_copy = self.background.copy()
+        self.bgY = 0
+        self.bgY2 = self.background.get_height() * -1
+        self.bg_speed = 1
+        # Set a clock
+        self.clock = pygame.time.Clock()
+        
+        # Game over check variable
+        self.game_over = False
+
+        # Set game pace
+        self.pace = 100
 
         #Ship settings
         self.ship_speed_factor = 1.5
@@ -29,20 +46,24 @@ class Settings():
 
         self.initialize_dynamic_settings()
 
+    def update_game_over(self):
+        self.game_over = not self.game_over
+
     def initialize_dynamic_settings(self):
         """Initialize settings that change throughout the game."""
-        self.ship_speed_factor = 1.5
-        self.bullet_speed_factor = 3
-        self.alien_speed_factor = 1
+        self.ship_speed_factor = 6
+        self.bullet_speed_factor = 6
+        self.alien_speed_factor = 1.5
 
         # fleet_direction of 1 represents right; -1 represents left
         self.fleet_direction = 1
 
         # Scoring
-        self.alien_points = 50
+        self.alien_points = 15
     
     def increase_speed(self):
         """Increase speed settings and alien point values."""
+        self.pace *= self.speedup_scale
         self.ship_speed_factor *= self.speedup_scale
         self.bullet_speed_factor *= self.speedup_scale
         self.alien_speed_factor *= self.speedup_scale
